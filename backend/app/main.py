@@ -2,14 +2,32 @@ from typing import List, Optional
 
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 from sqlmodel import Session, select
 from pydantic import BaseModel
 
+from pathlib import Path
 from app.db import init_db, get_session
 from app.models import Problem, Attempt, Submission, Feedback, SubmissionStatus
 from app.evaluators import CompositeEvaluator, EvaluationError
+from dotenv import load_dotenv
 
+load_dotenv()
 app = FastAPI(title="LLD Practice Platform")
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+FRONTEND_DIR = BASE_DIR.parent / "frontend"
+
+app.mount(
+    "/static",
+    StaticFiles(directory=FRONTEND_DIR),
+    name="static",
+)
+@app.get("/")
+def serve_frontend():
+    return FileResponse(FRONTEND_DIR / "index.html")
 
 app.add_middleware(
     CORSMiddleware,

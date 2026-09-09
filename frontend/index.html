@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DesignForge — LLD Practice Platform</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div>
+            <h1>DesignForge</h1>
+            <p>Practice Low-Level Design. Get explainable feedback.</p>
+        </div>
+    </header>
+
+    <main class="app-layout">
+
+        <!-- LEFT: Problem List -->
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+                <h2>Problems</h2>
+                <span>LLD Practice</span>
+            </div>
+
+            <div id="problem-list">
+                <!-- Problems will be inserted by app.js -->
+            </div>
+
+        </aside>
+
+
+        <!-- RIGHT: Main Workspace -->
+        <section class="workspace">
+
+            <!-- Empty state -->
+            <div id="empty-state" class="empty-state">
+
+                <div class="empty-icon">◇</div>
+
+                <h2>Choose a problem</h2>
+
+                <p>
+                    Select an LLD problem from the left
+                    to start practicing.
+                </p>
+
+            </div>
+
+
+            <!-- Selected problem -->
+            <div id="problem-view" class="hidden">
+
+                <div class="problem-header">
+
+                    <div>
+                        <p class="eyebrow">LOW-LEVEL DESIGN</p>
+
+                        <h2 id="problem-title"></h2>
+
+                        <p id="problem-description"></p>
+                    </div>
+
+                </div>
+
+
+                <!-- Start attempt -->
+                <div id="start-attempt-row" class="start-row">
+
+                    <p>
+                        Ready to design your solution?
+                    </p>
+
+                    <button id="start-attempt-btn">
+                        Start Attempt
+                    </button>
+
+                </div>
+
+
+                <!-- Work panel -->
+                <div id="work-panel" class="hidden">
+
+                    <div class="editor-header">
+
+                        <div>
+                            <h3>Your Solution</h3>
+
+                            <p>
+                                Describe your classes,
+                                interfaces, relationships and responsibilities.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <textarea
+                        id="submission-content"
+                        placeholder="Example:
+
+class ParkingLot
+    - floors
+    - parkingSpots
+
+class ParkingSpot
+    - spotId
+    - vehicleType
+
+interface SpotAssignmentStrategy
+    + findSpot(vehicle)
+
+Explain why you chose these classes and how they interact..."
+                    ></textarea>
+
+
+                    <div class="submit-row">
+
+                        <button id="submit-btn">
+                            Submit for Review
+                        </button>
+
+                        <span id="submit-status"></span>
+
+                    </div>
+
+
+                    <!-- Feedback -->
+                    <div id="feedback-container"></div>
+
+
+                    <!-- History -->
+                    <section class="history">
+
+                        <div class="section-heading">
+                            <h3>Attempt History</h3>
+                        </div>
+
+                        <div id="history-list">
+                            <p class="history-meta">
+                                No submissions yet for this attempt.
+                            </p>
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="/static/app.js"></script>
+
+</body>
+</html>
