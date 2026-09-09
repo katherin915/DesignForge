@@ -174,6 +174,7 @@ No background queue or distributed retry infrastructure is used because this is 
 
 * Python 3.11
 * uv
+* pip
 * A Groq API key
 
 Create a Groq API key from the [Groq Console](https://console.groq.com?utm_source=chatgpt.com).
@@ -188,7 +189,13 @@ cd DesignForge
 ### 2. Install dependencies
 
 ```bash
+Using pip:
+
 cd backend
+pip install -r requirements.txt
+
+Alternatively, using uv:
+
 uv sync
 ```
 
