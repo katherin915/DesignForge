@@ -1,5 +1,7 @@
 from typing import List, Optional
 
+from app.seed import seed
+
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -42,6 +44,7 @@ evaluator = CompositeEvaluator()
 @app.on_event("startup")
 def on_startup():
     init_db()
+    seed()  # Seed problems if not already seeded
 
 
 # ---------- Request/response schemas ----------
